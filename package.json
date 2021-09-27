@@ -1,0 +1,25 @@
+{
+  "name": "scrp-nd",
+  "version": "1.0.0",
+  "description": "Web Scraper with NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "start" : "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhonnierandrey/scrp-nd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhonnierandrey/scrp-nd/issues"
+  },
+  "homepage": "https://github.com/jhonnierandrey/scrp-nd#readme",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "cheerio": "^1.0.0-rc.10",
+    "express": "^4.17.1"
+  }
+}
