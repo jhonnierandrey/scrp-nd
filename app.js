@@ -8,14 +8,9 @@ const PORT = 3000
 const app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
-// Parse URL-encoded bodies (as sent by HTML forms)
-app.set('views', path.join(__dirname, 'views'));
 
-// Parse URL-encoded bodies (as sent by HTML forms)
-app.use(express.urlencoded());
-
-// Parse JSON bodies (as sent by API clients)
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.set('view engine', 'ejs');
 
