@@ -12,7 +12,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.set('view engine', 'ejs');
 
-
 // index page
 app.get('/', (req, res) => {
     res.render('pages/index');
@@ -20,10 +19,11 @@ app.get('/', (req, res) => {
 
 app.post('/api', (req, res) => {
 
-    const articles = []
-
-    axios(req.body.weburl)
+    
+    if(req.body.weburl.length > 1 && req.body.classname.length > 1){
+        axios(req.body.weburl)
         .then(response => {
+            const articles = []
             const html = response.data;
             const $ = cheerio.load(html);
 
@@ -36,8 +36,19 @@ app.post('/api', (req, res) => {
                     web_url
                 })
             })
-            res.send(articles)
+            if (articles.length >= 1) {
+                res.send(articles)
+            }else{
+                res.send({
+                    msg : 'Not matches found.'
+                })
+            }
         }).catch( err => console.log(err));
+    }else{
+        res.send({
+            msg : 'Fields are required.'
+        })
+    }
 })
 
 
