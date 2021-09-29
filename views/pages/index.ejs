@@ -10,10 +10,10 @@
 
     <div class="container-fluid">
         
-        <main>
-            <section class="container mt-5">
+        <main id="main">
+            <section class="container mt-5 search-box">
                 <div class="help-box">
-                    <p>Please enter the <i>Web URL</i> from where you want to stract the data and the <i>class name</i> of the tag/element containing relevant data.</p>
+                    <p>Please enter the <i>Web URL</i> from where you want to extract the data and the <i>class name</i> of the tag/element containing relevant data.</p>
                 </div>
                 <form method="POST" action="/">
                     <div class="mb-3">
@@ -28,6 +28,7 @@
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Check me out</label>
                     </div> -->
+                    <div class="error-msg"></div>
                     <button type="submit" class="btn btn-outline-primary btn-lg">Start</button>
                 </form>
             </section>
