@@ -5,21 +5,35 @@ document.addEventListener('DOMContentLoaded', () => {
         let url = e.target.weburl.value;
         let siteClassName = e.target.classname.value;
 
-        fetch('/api/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                weburl : url,
-                classname : siteClassName
+        if(siteClassName[0] != '.'){
+            document.querySelector('.error-msg').innerHTML = 'Invalid class name. Must start with a dot (.)';
+            return;
+        }
+        
+        if(url.length > 1 && siteClassName.length > 1){
+            fetch('/api/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    weburl : url,
+                    classname : siteClassName
+                })
             })
-        })
-        .then( response => response.json())
-        .then( results => display(results))
+            .then( response => response.json())
+            .then( results => {
+                if(results.msg){
+                    document.querySelector('.error-msg').innerHTML = results.msg;
+                }else{
+                    display(results)
+                }
+            })
+        }
     }
 
     function display(results){
+        document.querySelector('.error-msg').innerHTML = '';
         let resultsView = document.querySelector('.results-view');
         let table = document.createElement('table');
         table.classList.add('table');
